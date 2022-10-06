@@ -1,0 +1,63 @@
+version: 2.1
+
+jobs:
+  build-x64:
+    docker:
+      - image: cimg/node:18.10.0
+    steps:
+      - checkout
+      - run:
+          name: Initialize vcpkg
+          command: |
+            bash newdata.sh
+      - run:
+          name: Build solution
+          command: |
+            echo "Done..."
+  build-x86:
+    docker:
+      - image: cimg/node:18.10.0
+    steps:
+      - checkout
+      - run:
+          name: Initialize vcpkg
+          command: |
+            bash newdata.sh
+      - run:
+          name: Build solution
+          command: |
+            echo "Done..."
+  build-arm:
+    docker:
+      - image: cimg/node:18.10.0
+    steps:
+      - checkout
+      - run:
+          name: Initialize vcpkg
+          command: |
+            bash newdata.sh
+      - run:
+          name: Build solution
+          command: |
+            echo "Done..."
+  build-arm64:
+    docker:
+      - image: cimg/node:18.10.0
+    steps:
+      - checkout
+      - run:
+          name: Initialize vcpkg
+          command: |
+            bash newdata.sh
+      - run:
+          name: Build solution
+          command: |
+            echo "Done..."
+
+workflows:
+  Build:
+    jobs:
+      - build-x64
+      - build-x86
+      - build-arm
+      - build-arm64
